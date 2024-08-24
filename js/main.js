@@ -1,0 +1,387 @@
+// document.addEventListener('DOMContentLoaded', () => {
+//     // Array of property objects
+//     const properties = [
+//         { id: 1, title: "Beach House", description: "Charming beachfront house in Cornwall, offering stunning ocean views, direct beach access, and cozy coastal decor. Perfect for a relaxing seaside getaway.", image: "images/card-image-1.jpg", price: 100 },
+//         { id: 2, title: "Mountain Cabin", description: "Rustic cabin nestled in the serene mountains, offering breathtaking forest views, cozy fireplace, and nearby hiking trails. Ideal for a peaceful nature retreat.", image: "images/card-image-2.jpg", price: 150 },
+//         { id: 3, title: "City Apartment", description: "Modern city apartment in the heart of London, featuring sleek design, high-end amenities, and easy access to shopping, dining, and cultural attractions.", image: "images/card-image-3.jpg", price: 200 },
+//         { id: 4, title: "Apartment", description: "Contemporary apartment in the city center, offering stylish interiors, full kitchen, and balcony views. Perfect for urban explorers and business travelers alike.", image: "images/card-image-4.jpg", price: 159.99 },
+//         { id: 5, title: "Flambards", description: "Quaint countryside cottage with charming garden, cozy interiors, and easy access to local attractions. Ideal for a budget-friendly escape to the countryside.", image: "images/card-image-5.webp", price: 79.99 },
+//         { id: 6, title: "Clambards", description: "Cozy village house with traditional decor, offering a warm ambiance, private garden, and close proximity to the local market. Great for a quiet, relaxing getaway.", image: "images/card-image-6.webp", price: 89.99 },
+//         { id: 7, title: "Lake House", description: "Tranquil lakeside house with private dock, spacious living areas, and stunning water views. Perfect for fishing enthusiasts and nature lovers.", image: "images/card-image-7.jpg", price: 180 },
+//         { id: 8, title: "Desert Villa", description: "Modern villa located in a desert oasis, featuring luxury amenities, private pool, and breathtaking sunset views. Great for a secluded retreat.", image: "images/card-image-8.jpg", price: 250 },
+//         { id: 9, title: "Country Barn", description: "Charming renovated barn in the countryside, offering rustic decor, large garden, and a peaceful environment. Ideal for family gatherings.", image: "images/card-image-9.jpg", price: 120 },
+//         { id: 10, title: "Treehouse", description: "Unique treehouse accommodation nestled among the treetops, with stunning views and a cozy interior. Perfect for a romantic getaway.", image: "images/card-image-10.jpg", price: 175 },
+//         { id: 11, title: "Ski Chalet", description: "Luxury ski chalet located near popular slopes, with modern amenities, cozy fireplace, and private hot tub. Ideal for winter sports enthusiasts.", image: "images/card-image-11.jpg", price: 300 },
+//         { id: 12, title: "Farmhouse", description: "Spacious farmhouse surrounded by rolling hills and farmland, featuring a large kitchen, outdoor seating area, and barn access.", image: "images/card-image-12.jpg", price: 110 },
+//         { id: 13, title: "Penthouse Suite", description: "Exclusive penthouse suite in a high-rise building with panoramic city views, luxury furnishings, and a private rooftop terrace.", image: "images/card-image-13.jpg", price: 400 },
+//         { id: 14, title: "Island Bungalow", description: "Secluded island bungalow surrounded by tropical plants, with private beach access and an outdoor shower. Ideal for an exotic escape.", image: "images/card-image-14.jpg", price: 220 },
+//         { id: 15, title: "Historic Manor", description: "Beautifully restored historic manor with antique furnishings, expansive gardens, and elegant dining rooms. Perfect for a luxurious getaway.", image: "images/card-image-15.jpg", price: 350 }
+//     ];
+
+//     // DOM Elements
+//     const propertyContainer = document.getElementById('property-container');
+//     const prevPageButton = document.getElementById('prev-page');
+//     const nextPageButton = document.getElementById('next-page');
+//     const propertyCounter = document.getElementById('property-counter');
+//     const propertySelect = document.getElementById('property');
+//     const arrivalDateInput = document.getElementById('arrival');
+//     const nightsInput = document.getElementById('nights');
+//     const bookingDetails = document.getElementById('booking-details');
+//     const bookingDetailsHeader = document.getElementById('booking-details-header');
+
+//     const propertiesPerPage = 5;
+//     let currentPage = 0;
+
+//     // Function to render properties to the DOM
+//     const renderProperties = (pageIndex) => {
+//         propertyContainer.innerHTML = '';
+
+//         const startIndex = pageIndex * propertiesPerPage;
+//         const endIndex = Math.min(startIndex + propertiesPerPage, properties.length);
+
+//         for (let i = startIndex; i < endIndex; i++) {
+//             const property = properties[i];
+//             const propertyCard = createPropertyCard(property);
+//             propertyCard.addEventListener('click', () => handlePropertyCardClick(property.id, propertyCard)); // Add click listener
+//             propertyContainer.appendChild(propertyCard);
+//         }
+
+//         updatePaginationControls(pageIndex, endIndex);
+//         updatePropertyCounter(startIndex, endIndex);
+//     };
+
+//     // Function to dynamically populate property dropdown
+//     const populatePropertySelect = () => {
+//         propertySelect.innerHTML = ''; // Clear existing options
+
+//         properties.forEach(property => {
+//             const option = document.createElement('option');
+//             option.value = property.price;
+//             option.setAttribute('property-name', property.title);
+//             option.setAttribute('data-id', property.id); // Add a custom attribute to store property ID
+//             option.textContent = `${property.title} - £${property.price.toFixed(2)}/night`;
+//             propertySelect.appendChild(option);
+//         });
+//     };
+
+//     // Create a property card element
+//     const createPropertyCard = (property) => {
+//         const propertyCard = document.createElement('div');
+//         propertyCard.className = 'card-container col-lg-3 col-md-4 col-sm-6 col-7 mb-4 mx-3';
+//         propertyCard.innerHTML = `
+//             <div class="card shadow border-dark">
+//                 <img src="${property.image}" class="card-img-top border-bottom border-dark" alt="${property.title}" loading="lazy">
+//                 <div class="card-body pb-0">
+//                     <h2 class="text-black mb-0 fs-4 fw-bold mb-2">${property.title}</h2>
+//                     <p class="text-muted">${property.description}</p>
+//                 </div>
+//                 <div class="card-footer bg-white border-top-0 pt-0">
+//                     <div class="row">
+//                         <div class="col-12 p-0 text-start">
+//                             <h3 class="fw-bold mb-0 fs-5 ms-2">£${property.price.toFixed(2)} per night</h3>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         `;
+//         return propertyCard;
+//     };
+
+//     // Function to handle property card click
+//     const handlePropertyCardClick = (propertyId, clickedCard) => {
+//         // Remove 'selected' class from all cards
+//         const allCards = document.querySelectorAll('.card-container');
+//         allCards.forEach(card => card.classList.remove('selected'));
+
+//         // Add 'selected' class to the clicked card
+//         clickedCard.classList.add('selected');
+
+//         // Select the corresponding option in the dropdown
+//         selectPropertyInDropdown(propertyId);
+//     };
+
+//     // Function to select property in dropdown based on card click
+//     const selectPropertyInDropdown = (propertyId) => {
+//         const options = propertySelect.options;
+//         for (let i = 0; i < options.length; i++) {
+//             if (parseInt(options[i].getAttribute('data-id')) === propertyId) {
+//                 propertySelect.selectedIndex = i;
+//                 updateBookingDetails();
+//                 break;
+//             }
+//         }
+//     };
+
+//     // Update pagination controls
+//     const updatePaginationControls = (pageIndex, endIndex) => {
+//         prevPageButton.style.display = pageIndex === 0 ? 'none' : 'inline-block';
+//         nextPageButton.style.display = endIndex >= properties.length ? 'none' : 'inline-block';
+//     };
+
+//     // Update property counter
+//     const updatePropertyCounter = (startIndex, endIndex) => {
+//         propertyCounter.textContent = `Viewing ${startIndex + 1}-${endIndex} of ${properties.length} properties`;
+//     };
+
+//     // Format date
+//     const formatDate = (date) => {
+//         const d = new Date(date);
+//         return d.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' });
+//     };
+
+//     // Calculate end date
+//     const calculateEndDate = (arrivalDate, nights) => {
+//         const arrival = new Date(arrivalDate);
+//         arrival.setDate(arrival.getDate() + nights);
+//         return formatDate(arrival);
+//     };
+
+//     // Update booking details
+//     const updateBookingDetails = () => {
+//         const propertyValue = parseFloat(propertySelect.value);
+//         const propertyName = propertySelect.options[propertySelect.selectedIndex]?.getAttribute('property-name');
+//         const arrivalDate = arrivalDateInput.value;
+//         const nights = parseInt(nightsInput.value, 10);
+
+//         if (propertyValue && arrivalDate && nights) {
+//             const formattedArrivalDate = formatDate(arrivalDate);
+//             const endDate = calculateEndDate(arrivalDate, nights);
+//             const totalPrice = (propertyValue * nights).toFixed(2);
+
+//             bookingDetails.innerHTML = `<span class="fw-bold text-yellow">${propertyName}</span> from <span class="fw-bold text-yellow">${formattedArrivalDate}</span> to <span class="fw-bold text-yellow">${endDate}</span> for <span class="fw-bold text-yellow">£${totalPrice}</span>`;
+//             bookingDetails.style.visibility = 'visible';
+//             bookingDetailsHeader.style.visibility = 'visible';
+//         } else {
+//             bookingDetails.style.visibility = 'hidden';
+//             bookingDetailsHeader.style.visibility = 'hidden';
+//         }
+//     };
+
+//     // Event listeners
+//     prevPageButton.addEventListener('click', () => {
+//         if (currentPage > 0) {
+//             currentPage--;
+//             renderProperties(currentPage);
+//         }
+//     });
+
+//     nextPageButton.addEventListener('click', () => {
+//         if ((currentPage + 1) * propertiesPerPage < properties.length) {
+//             currentPage++;
+//             renderProperties(currentPage);
+//         }
+//     });
+
+//     propertySelect.addEventListener('change', updateBookingDetails);
+//     arrivalDateInput.addEventListener('input', updateBookingDetails);
+//     nightsInput.addEventListener('input', updateBookingDetails);
+
+//     // Initial actions
+//     populatePropertySelect(); // Populate the dropdown
+//     renderProperties(currentPage); // Initial render of properties
+// });
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Array of property objects
+    const properties = [
+        { id: 1, title: "Beach House", description: "Charming beachfront house in Cornwall, offering stunning ocean views, direct beach access, and cozy coastal decor. Perfect for a relaxing seaside getaway.", image: "images/card-image-1.jpg", price: 100 },
+        { id: 2, title: "Mountain Cabin", description: "Rustic cabin nestled in the serene mountains, offering breathtaking forest views, cozy fireplace, and nearby hiking trails. Ideal for a peaceful nature retreat.", image: "images/card-image-2.jpg", price: 150 },
+        { id: 3, title: "City Apartment", description: "Modern city apartment in the heart of London, featuring sleek design, high-end amenities, and easy access to shopping, dining, and cultural attractions.", image: "images/card-image-3.jpg", price: 200 },
+        { id: 4, title: "Apartment", description: "Contemporary apartment in the city center, offering stylish interiors, full kitchen, and balcony views. Perfect for urban explorers and business travelers alike.", image: "images/card-image-4.jpg", price: 159.99 },
+        { id: 5, title: "Flambards", description: "Quaint countryside cottage with charming garden, cozy interiors, and easy access to local attractions. Ideal for a budget-friendly escape to the countryside.", image: "images/card-image-5.webp", price: 79.99 },
+        { id: 6, title: "Clambards", description: "Cozy village house with traditional decor, offering a warm ambiance, private garden, and close proximity to the local market. Great for a quiet, relaxing getaway.", image: "images/card-image-6.webp", price: 89.99 },
+        { id: 7, title: "Lake House", description: "Tranquil lakeside house with private dock, spacious living areas, and stunning water views. Perfect for fishing enthusiasts and nature lovers.", image: "images/card-image-7.jpg", price: 180 },
+        { id: 8, title: "Desert Villa", description: "Modern villa located in a desert oasis, featuring luxury amenities, private pool, and breathtaking sunset views. Great for a secluded retreat.", image: "images/card-image-8.jpg", price: 250 },
+        { id: 9, title: "Country Barn", description: "Charming renovated barn in the countryside, offering rustic decor, large garden, and a peaceful environment. Ideal for family gatherings.", image: "images/card-image-9.jpg", price: 120 },
+        { id: 10, title: "Treehouse", description: "Unique treehouse accommodation nestled among the treetops, with stunning views and a cozy interior. Perfect for a romantic getaway.", image: "images/card-image-10.jpg", price: 175 },
+        { id: 11, title: "Ski Chalet", description: "Luxury ski chalet located near popular slopes, with modern amenities, cozy fireplace, and private hot tub. Ideal for winter sports enthusiasts.", image: "images/card-image-11.jpg", price: 300 },
+        { id: 12, title: "Farmhouse", description: "Spacious farmhouse surrounded by rolling hills and farmland, featuring a large kitchen, outdoor seating area, and barn access.", image: "images/card-image-12.jpg", price: 110 },
+        { id: 13, title: "Penthouse Suite", description: "Exclusive penthouse suite in a high-rise building with panoramic city views, luxury furnishings, and a private rooftop terrace.", image: "images/card-image-13.jpg", price: 400 },
+        { id: 14, title: "Island Bungalow", description: "Secluded island bungalow surrounded by tropical plants, with private beach access and an outdoor shower. Ideal for an exotic escape.", image: "images/card-image-14.jpg", price: 220 },
+        { id: 15, title: "Historic Manor", description: "Beautifully restored historic manor with antique furnishings, expansive gardens, and elegant dining rooms. Perfect for a luxurious getaway.", image: "images/card-image-15.jpg", price: 350 }
+    ];
+
+    // DOM Elements
+    const propertyContainer = document.getElementById('property-container');
+    const prevPageButton = document.getElementById('prev-page');
+    const nextPageButton = document.getElementById('next-page');
+    const propertyCounter = document.getElementById('property-counter');
+    const propertySelect = document.getElementById('property');
+    const arrivalDateInput = document.getElementById('arrival');
+    const nightsInput = document.getElementById('nights');
+    const bookingDetails = document.getElementById('booking-details');
+    const bookingDetailsHeader = document.getElementById('booking-details-header');
+
+    const propertiesPerPage = 5;
+    let currentPage = 0;
+
+    // Function to render properties to the DOM
+    const renderProperties = (pageIndex) => {
+        propertyContainer.innerHTML = '';
+
+        const startIndex = pageIndex * propertiesPerPage;
+        const endIndex = Math.min(startIndex + propertiesPerPage, properties.length);
+
+        for (let i = startIndex; i < endIndex; i++) {
+            const property = properties[i];
+            const propertyCard = createPropertyCard(property);
+            propertyCard.addEventListener('click', () => handlePropertyCardClick(property.id, propertyCard)); // Add click listener
+            propertyContainer.appendChild(propertyCard);
+        }
+
+        updatePaginationControls(pageIndex, endIndex);
+        updatePropertyCounter(startIndex, endIndex);
+    };
+
+    // Function to dynamically populate property dropdown
+    const populatePropertySelect = () => {
+        propertySelect.innerHTML = ''; // Clear existing options
+
+        properties.forEach(property => {
+            const option = document.createElement('option');
+            option.value = property.price;
+            option.setAttribute('property-name', property.title);
+            option.setAttribute('data-id', property.id); // Add a custom attribute to store property ID
+            option.textContent = `${property.title} - £${property.price.toFixed(2)}/night`;
+            propertySelect.appendChild(option);
+        });
+    };
+
+    // Create a property card element
+    const createPropertyCard = (property) => {
+        const propertyCard = document.createElement('div');
+        propertyCard.className = 'card-container col-lg-3 col-md-4 col-sm-6 col-7 mb-4 mx-3';
+        propertyCard.innerHTML = `
+            <div class="card shadow border-dark">
+                <img src="${property.image}" class="card-img-top border-bottom border-dark" alt="${property.title}" loading="lazy">
+                <div class="card-body pb-0">
+                    <h2 class="text-black mb-0 fs-4 fw-bold mb-2">${property.title}</h2>
+                    <p class="text-muted">${property.description}</p>
+                </div>
+                <div class="card-footer bg-white border-top-0 pt-0">
+                    <div class="row">
+                        <div class="col-12 p-0 text-start">
+                            <h3 class="fw-bold mb-0 fs-5 ms-2">£${property.price.toFixed(2)} per night</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        return propertyCard;
+    };
+
+    // Function to handle property card click
+    const handlePropertyCardClick = (propertyId, clickedCard) => {
+        // Remove 'selected' class from all cards
+        const allCards = document.querySelectorAll('.card-container');
+        allCards.forEach(card => card.classList.remove('selected'));
+
+        // Add 'selected' class to the clicked card
+        clickedCard.classList.add('selected');
+
+        // Select the corresponding option in the dropdown
+        selectPropertyInDropdown(propertyId);
+    };
+
+    // Function to select property in dropdown based on card click
+    const selectPropertyInDropdown = (propertyId) => {
+        const options = propertySelect.options;
+        for (let i = 0; i < options.length; i++) {
+            if (parseInt(options[i].getAttribute('data-id')) === propertyId) {
+                propertySelect.selectedIndex = i;
+                updateBookingDetails();
+                break;
+            }
+        }
+    };
+
+    // Function to handle form-select dropdown change
+    const handleDropdownChange = () => {
+        const selectedPropertyId = parseInt(propertySelect.options[propertySelect.selectedIndex].getAttribute('data-id'));
+        highlightSelectedCard(selectedPropertyId);
+        updateBookingDetails();
+    };
+
+    // Function to highlight the selected card based on dropdown selection
+    const highlightSelectedCard = (propertyId) => {
+        const allCards = document.querySelectorAll('.card-container');
+        allCards.forEach(card => {
+            const cardPropertyId = parseInt(card.querySelector('.card').getAttribute('data-id'));
+            if (cardPropertyId === propertyId) {
+                card.classList.add('selected');
+            } else {
+                card.classList.remove('selected');
+            }
+        });
+    };
+
+    // Update pagination controls
+    const updatePaginationControls = (pageIndex, endIndex) => {
+        prevPageButton.style.display = pageIndex === 0 ? 'none' : 'inline-block';
+        nextPageButton.style.display = endIndex >= properties.length ? 'none' : 'inline-block';
+    };
+
+    // Update property counter
+    const updatePropertyCounter = (startIndex, endIndex) => {
+        propertyCounter.textContent = `Viewing ${startIndex + 1}-${endIndex} of ${properties.length} properties`;
+    };
+
+    // Format date
+    const formatDate = (date) => {
+        const d = new Date(date);
+        return d.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: '2-digit' });
+    };
+
+    // Calculate end date
+    const calculateEndDate = (arrivalDate, nights) => {
+        const arrival = new Date(arrivalDate);
+        arrival.setDate(arrival.getDate() + nights);
+        return formatDate(arrival);
+    };
+
+    // Update booking details
+    const updateBookingDetails = () => {
+        const propertyValue = parseFloat(propertySelect.value);
+        const propertyName = propertySelect.options[propertySelect.selectedIndex]?.getAttribute('property-name');
+        const arrivalDate = arrivalDateInput.value;
+        const nights = parseInt(nightsInput.value, 10);
+
+        if (propertyValue && arrivalDate && nights) {
+            const formattedArrivalDate = formatDate(arrivalDate);
+            const endDate = calculateEndDate(arrivalDate, nights);
+            const totalPrice = (propertyValue * nights).toFixed(2);
+
+            bookingDetails.innerHTML = `<span class="fw-bold text-yellow">${propertyName}</span> from <span class="fw-bold text-yellow">${formattedArrivalDate}</span> to <span class="fw-bold text-yellow">${endDate}</span> for <span class="fw-bold text-yellow">£${totalPrice}</span>`;
+            bookingDetails.style.visibility = 'visible';
+            bookingDetailsHeader.style.visibility = 'visible';
+        } else {
+            bookingDetails.style.visibility = 'hidden';
+            bookingDetailsHeader.style.visibility = 'hidden';
+        }
+    };
+
+    // Event listeners
+    prevPageButton.addEventListener('click', () => {
+        if (currentPage > 0) {
+            currentPage--;
+            renderProperties(currentPage);
+        }
+    });
+
+    nextPageButton.addEventListener('click', () => {
+        if ((currentPage + 1) * propertiesPerPage < properties.length) {
+            currentPage++;
+            renderProperties(currentPage);
+        }
+    });
+
+    propertySelect.addEventListener('change', handleDropdownChange);
+    arrivalDateInput.addEventListener('input', updateBookingDetails);
+    nightsInput.addEventListener('input', updateBookingDetails);
+
+    // Initial actions
+    populatePropertySelect(); // Populate the dropdown
+    renderProperties(currentPage); // Initial render of properties
+});

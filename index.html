@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Anytime</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+    <!-- FONT AWESOME -->
+    <script src="https://kit.fontawesome.com/d29701d5af.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <header class="shadow-lg fixed-top-0">
+        <nav class="container-fluid my-3">
+            <div class="row">
+                <div class="col-12 col-md-4 text-md-start text-center">
+                    <a href="" class="fs-3 text-decoration-none text-white fw-bold logo"><span><i
+                                class="fa-regular fa-sun"></i></span>Anytime Booking</a>
+                </div>
+                <div class="col-12 col-md-8 text-md-end text-center">
+                    <ul class="fs-4 nav-list">
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Properties</a>
+                        </li>
+                        <li>
+                            <a href="#">Explore</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="main-container">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 secondary-bg-color text-white">
+                    <h2 class="fs-1 ms-2 mt-4">Find your next stay...</h2>
+                    <p class="fs-5 ms-5">...Is only a click away!</p>
+                </div>
+            </div>
+            <div class="row pb-4 p-4 secondary-bg-color">
+                <div class="col-10 col-sm-4">
+                    <div class="form-group">
+                        <label class="form-label text-white" for="property">Select Property</label>
+                        <select class="form-select" id="property">
+                            <!-- Properties will be rendered here -->
+                        </select>
+                    </div>
+                </div>
+                <div class="col-10 col-sm-4">
+                    <div class="form-group">
+                        <label class="form-label text-white" for="arrival">Arrival Date</label>
+                        <input class="form-control" type="date" id="arrival">
+                    </div>
+                </div>
+                <div class="col-10 col-sm-4">
+                    <div class="form-group">
+                        <label class="form-label text-white" for="nights">Number of Nights</label>
+                        <input class="form-control" type="number" id="nights" min="1">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row secondary-bg-color pb-3 pt-2">
+                <div class="col-12">
+                    <h2 class="text-white text-center text-decoration-underline fs-3" id="booking-details-header">Your
+                        Booking Details</h2>
+                    <div class="text-white text-center fs-4">
+                        <p id="booking-details">--</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row mt-4">
+                    <div id="property-container" class="col-12 overflow-x-scroll d-flex px-0 pb-3">
+                        <!-- Property cards will be rendered here -->
+                    </div>
+                </div>
+                <!-- Pagination controls -->
+                <div class="pagination-controls my-3 text-center">
+                    <div class="row">
+                        <div class="col-lg-4 text-end">
+                            <button id="prev-page" class="btn btn-secondary">Previous</button>
+                        </div>
+                        <div class="col-12 col-lg-4 text-center">
+                            <span id="property-counter" class="mx-3">Viewing 1-5 of 15 properties</span>
+                        </div>
+
+                        <div class="col-lg-4 text-start">
+                            <button id="next-page" class="btn btn-primary">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <footer class="shadow">
+        <div class="container-fluid">
+            <ul class="text-center">
+                <li>
+                    <a href="#" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
+                </li>
+                <li>
+                    <a href="#" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
+
+                </li>
+                <li>
+                    <a href="#" target="_blank"><i class="fa-brands fa-square-twitter"></i></a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <!-- JAVASCRIPT -->
+    <script src="js/main.js"></script>
+    <!-- Popper.js and Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
