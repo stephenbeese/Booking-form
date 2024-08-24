@@ -1,12 +1,3 @@
-#booking-details,
-#booking-details-header {
-    display: none;
-}
-
-.text-yellow {
-    color: #ffb700;
-}
-
 html, body {
     height: 100%;
     margin: 0;
@@ -21,6 +12,12 @@ html, body {
 header, footer {
     background-color: #006ce4;
     height: fit-content;
+}
+
+footer a {
+    color: white;
+    font-size: 3rem;
+    margin: 0.3em;
 }
 
 .logo span {
@@ -60,14 +57,22 @@ header ul li:last-child, footer ul li:last-child {
     margin-right: 0;
 }
 
-footer a {
-    color: white;
-    font-size: 3rem;
-    margin: 0.3em;
-}
-
 .secondary-bg-color {
     background-color: #003b95;
+}
+
+.text-yellow {
+    color: #ffb700;
+}
+
+#booking-details,
+#booking-details-header {
+    display: none;
+}
+
+#property-container {
+    overflow-y: hidden;
+    max-width: fit-content;
 }
 
 .card-body p {
@@ -111,13 +116,25 @@ footer a {
     margin-top: auto;
 }
 
-#property-container {
-    overflow-y: hidden;
-}
 
+/* MEDIA QUERIES */
 @media (max-width: 454px) {
     #property-counter {
         font-size: 1em;
     }
 }
+
+/* ANIMATIONS */
+.appear {
+    transition: all 0.8s;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.appear.inview {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.3s;
+}
+
 

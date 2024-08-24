@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Array of property objects
     const properties = [
         { id: 1, title: "Beach House", description: "Charming beachfront house in Cornwall, offering stunning ocean views, direct beach access, and cozy coastal decor. Perfect for a relaxing seaside getaway.", image: "images/card-image-1.jpg", price: 100 },
         { id: 2, title: "Mountain Cabin", description: "Rustic cabin nestled in the serene mountains, offering breathtaking forest views, cozy fireplace, and nearby hiking trails. Ideal for a peaceful nature retreat.", image: "images/card-image-2.jpg", price: 150 },
@@ -18,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 15, title: "Historic Manor", description: "Beautifully restored historic manor with antique furnishings, expansive gardens, and elegant dining rooms. Perfect for a luxurious getaway.", image: "images/card-image-15.jpg", price: 350 }
     ];
 
-    // DOM Elements
     const propertyContainer = document.getElementById('property-container');
     const prevPageButton = document.getElementById('prev-page');
     const nextPageButton = document.getElementById('next-page');
@@ -42,12 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = startIndex; i < endIndex; i++) {
             const property = properties[i];
             const propertyCard = createPropertyCard(property);
-            propertyCard.addEventListener('click', () => handlePropertyCardClick(property.id, propertyCard)); // Add click listener
+            propertyCard.addEventListener('click', () => handlePropertyCardClick(property.id, propertyCard)); 
             propertyContainer.appendChild(propertyCard);
         }
 
         updatePaginationControls(pageIndex, endIndex);
         updatePropertyCounter(startIndex, endIndex);
+
+        // Observe newly created property cards for fade-in effect
+        observeCards();
     };
 
     // Function to dynamically populate property dropdown
@@ -58,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const option = document.createElement('option');
             option.value = property.price;
             option.setAttribute('property-name', property.title);
-            option.setAttribute('data-id', property.id); // Add a custom attribute to store property ID
+            option.setAttribute('data-id', property.id);
             option.textContent = `${property.title} - £${property.price.toFixed(2)}/night`;
             propertySelect.appendChild(option);
         });
@@ -67,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Create a property card element
     const createPropertyCard = (property) => {
         const propertyCard = document.createElement('div');
-        propertyCard.className = 'card-container col-lg-3 col-md-4 col-sm-6 col-7 mb-4 mx-3';
+        propertyCard.className = 'card-container col-lg-3 col-md-4 col-sm-6 col-7 mb-4 mx-3 appear';
         propertyCard.innerHTML = `
             <div class="card shadow border-dark">
                 <img src="${property.image}" class="card-img-top border-bottom border-dark" alt="${property.title}" loading="lazy">
@@ -89,14 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to handle property card click
     const handlePropertyCardClick = (propertyId, clickedCard) => {
-        // Remove 'selected' class from all cards
         const allCards = document.querySelectorAll('.card-container');
         allCards.forEach(card => card.classList.remove('selected'));
 
-        // Add 'selected' class to the clicked card
         clickedCard.classList.add('selected');
-
-        // Select the corresponding option in the dropdown
         selectPropertyInDropdown(propertyId);
     };
 
@@ -164,12 +161,33 @@ document.addEventListener('DOMContentLoaded', () => {
             const totalPrice = (propertyValue * nights).toFixed(2);
 
             bookingDetails.innerHTML = `<span class="fw-bold text-yellow">${propertyName}</span> from <span class="fw-bold text-yellow">${formattedArrivalDate}</span> to <span class="fw-bold text-yellow">${endDate}</span> for <span class="fw-bold text-yellow">£${totalPrice}</span>`;
-            bookingDetails.style.display = 'block'; // Make visible
-            bookingDetailsHeader.style.display = 'block'; // Make visible
+            bookingDetails.style.display = 'block'; 
+            bookingDetailsHeader.style.display = 'block'; 
         } else {
-            bookingDetails.style.display = 'none'; // Hide if any input is missing
-            bookingDetailsHeader.style.display = 'none'; // Hide if any input is missing
+            bookingDetails.style.display = 'none'; 
+            bookingDetailsHeader.style.display = 'none'; 
         }
+    };
+
+    // Observe each card with IntersectionObserver
+    const observeCards = () => {
+        const cards = document.querySelectorAll('.appear');
+
+        const callback = function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('inview');
+                } else {
+                    entry.target.classList.remove('inview');
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(callback);
+
+        cards.forEach(card => {
+            observer.observe(card);
+        });
     };
 
     // Event listeners
@@ -192,6 +210,10 @@ document.addEventListener('DOMContentLoaded', () => {
     nightsInput.addEventListener('input', updateBookingDetails);
 
     // Initial actions
-    populatePropertySelect(); // Populate the dropdown
-    renderProperties(currentPage); // Initial render of property cards
+    populatePropertySelect(); 
+    renderProperties(currentPage); 
 });
+
+
+
+

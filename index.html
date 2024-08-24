@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Anytime</title>
+    <title>Anytime Booking</title>
 
-    <!-- Favicon -->
-    <link rel="icon" href="images/favicon.png">
+    <!-- FAVICON -->
+    <link rel="icon" href="images/favicon/favicon.png">
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <!-- CSS -->
@@ -23,15 +23,16 @@
 </head>
 
 <body>
+    <!-- HEADER -->
     <header class="shadow-lg fixed-top-0">
         <nav class="container-fluid my-3">
             <div class="row">
-                <div class="col-12 col-md-4 text-md-start text-center">
-                    <a href="" class="fs-3 text-decoration-none text-white fw-bold logo"><span><i
+                <div class="col-12 col-md-5 mb-2 text-md-start text-center">
+                    <a href="" class="fs-3 text-decoration-none text-white fw-bold logo appear"><span><i
                                 class="fa-regular fa-sun"></i></span>Anytime Booking</a>
                 </div>
-                <div class="col-12 col-md-8 text-md-end text-center">
-                    <ul class="fs-4 nav-list">
+                <div class="col-12 col-md-7 text-md-end text-center">
+                    <ul class="fs-4 nav-list appear">
                         <li>
                             <a href="index.html">Home</a>
                         </li>
@@ -47,49 +48,53 @@
         </nav>
     </header>
     <div class="main-container">
+        <!-- TAGLINE -->
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 secondary-bg-color text-white">
-                    <h2 class="fs-1 ms-2 mt-4">Find your next stay...</h2>
-                    <p class="fs-5 ms-5">...Is only a click away!</p>
+                    <h2 class="fs-1 ms-2 mt-4 mt-lg-5 appear">Find your next stay...</h2>
+                    <p class="fs-5 ms-5 appear">...Is only a click away!</p>
                 </div>
             </div>
+            <!-- BOOKING FORM -->
             <div class="row pb-4 p-4 secondary-bg-color justify-content-center">
-                <div class="col-10 col-sm-4">
+                <div class="col-10 col-sm-4 col-lg-3">
                     <div class="form-group">
-                        <label class="form-label text-white" for="property">Select Property</label>
-                        <select class="form-select" id="property">
-                            <!-- Properties will be rendered here -->
+                        <label class="form-label text-white appear" for="property">Select Property</label>
+                        <select class="form-select appear" id="property">
+                            <!-- Properties will be rendered here from JavaScript-->
                         </select>
                     </div>
                 </div>
-                <div class="col-10 col-sm-4">
+                <div class="col-10 col-sm-4 col-lg-3">
                     <div class="form-group">
-                        <label class="form-label text-white" for="arrival">Arrival Date</label>
-                        <input class="form-control" type="date" id="arrival">
+                        <label class="form-label text-white appear" for="arrival">Arrival Date</label>
+                        <input class="form-control appear" type="date" id="arrival">
                     </div>
                 </div>
-                <div class="col-10 col-sm-4">
+                <div class="col-10 col-sm-4 col-lg-3">
                     <div class="form-group">
-                        <label class="form-label text-white" for="nights">Number of Nights</label>
-                        <input class="form-control" type="number" id="nights" min="1">
+                        <label class="form-label text-white appear" for="nights">Number of Nights</label>
+                        <input class="form-control appear" type="number" id="nights" min="1">
                     </div>
                 </div>
             </div>
 
+            <!-- BOOKING DETAILS -->
             <div class="row secondary-bg-color pb-3 pt-2">
                 <div class="col-12">
                     <h2 class="text-white text-center text-decoration-underline fs-3" id="booking-details-header"></h2>
                     <div class="text-white text-center fs-4">
-                        <p id="booking-details"></p>
+                        <p id="booking-details" class="appear"></p>
                     </div>
                 </div>
             </div>
 
+            <!-- CARDS CONTAINER -->
             <div class="container-fluid">
                 <div class="row mt-4">
                     <div id="property-container" class="col-12 overflow-x-scroll d-flex px-0 pb-3">
-                        <!-- Property cards will be rendered here -->
+                        <!-- Property cards will be rendered here from JavaScript -->
                     </div>
                 </div>
                 <!-- Pagination controls -->
@@ -111,12 +116,10 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 
-
+    <!-- FOOTER -->
     <footer class="shadow">
         <div class="container-fluid">
             <ul class="text-center">
