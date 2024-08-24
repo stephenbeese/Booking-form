@@ -1,105 +1,12 @@
-/* html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-.main-container {
-    flex: 1;
-}
-
-header, footer {
-    background-color: rgba(3, 116, 218, 1);
-    height: fit-content;
-}
-
-.logo span {
-    color: yellow;
-    margin: 0 5px;
-}
-
-.nav-list a {
-    text-decoration: none;
-    color: white;
-    padding: 5px 10px;
-}
-
-.nav-list a span {
-    margin: 5px;
-    font-size: 0.7em;
-}
-
-.nav-list a:hover {
-    background-color: #14c9f36e;
-    border-radius: 60px;
-    border: 1px solid white;
-}
-
-header ul, footer ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-header ul li, footer ul li {
-    display: inline-block;
-    margin-right: 15px;
-}
-
-header ul li:last-child, footer ul li:last-child {
-    margin-right: 0;
-}
-
-footer a {
-    color: white;
-    font-size: 3rem;
-    margin: 0.3em;
-}
-
-
-.secondary-bg-color {
-    background-color: #1445b8;
-}
-
-
-#booking-details, #booking-details-header{
-    visibility: hidden;
+#booking-details,
+#booking-details-header {
+    display: none;
 }
 
 .text-yellow {
-    color: yellow;
+    color: #ffb700;
 }
 
-
-.card-body p {
-    font-size: 0.8em;
-}
-
-.card-container {
-    max-width: 300px;
-}
-
-.card-container:hover {
-    cursor: pointer;
-}
-
-.card {
-    min-height: fit-content;
-    max-height: 550px;
-    max-width: 300px;
-}
-
-.card-img-top {
-    height: 250px;
-}
-.selected {
-    border: 2px solid blue;
-    border-radius: 10px;
-} */
-
-
-/* Your existing CSS */
 html, body {
     height: 100%;
     margin: 0;
@@ -112,12 +19,12 @@ html, body {
 }
 
 header, footer {
-    background-color: rgba(3, 116, 218, 1);
+    background-color: #006ce4;
     height: fit-content;
 }
 
 .logo span {
-    color: yellow;
+    color: #ffb700;
     margin: 0 5px;
 }
 
@@ -133,7 +40,7 @@ header, footer {
 }
 
 .nav-list a:hover {
-    background-color: #14c9f36e;
+    background-color: #003b95;
     border-radius: 60px;
     border: 1px solid white;
 }
@@ -160,15 +67,7 @@ footer a {
 }
 
 .secondary-bg-color {
-    background-color: #1445b8;
-}
-
-#booking-details, #booking-details-header {
-    visibility: hidden;
-}
-
-.text-yellow {
-    color: yellow;
+    background-color: #003b95;
 }
 
 .card-body p {
@@ -177,9 +76,9 @@ footer a {
 
 .card-container {
     max-width: 300px;
-    display: flex; /* Flexbox to make children (card) stretch */
-    flex-direction: column; /* Make sure children stack vertically */
-    height: 100%; /* Ensure the container takes the full height allocated */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .card-container:hover {
@@ -187,12 +86,12 @@ footer a {
 }
 
 .card {
-    flex: 1; /* Makes all cards take equal height */
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Ensures footer is pushed to the bottom */
+    justify-content: space-between;
     max-width: 300px;
-    height: 100%; /* Make card fill the container height */
+    height: 100%;
     border: 1px solid #ddd;
     border-radius: 10px;
     overflow: hidden;
@@ -204,7 +103,7 @@ footer a {
 }
 
 .selected {
-    border: 2px solid black;
+    border: 2px solid #006ce4;
     border-radius: 0.5em;
 }
 
@@ -216,14 +115,9 @@ footer a {
     overflow-y: hidden;
 }
 
-/* @media (max-width: 768px) {
-    .card-container {
-        max-width: 100%;
-    }
-} */
-
 @media (max-width: 454px) {
     #property-counter {
         font-size: 1em;
     }
 }
+
