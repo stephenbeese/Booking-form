@@ -110,6 +110,7 @@ header ul li:last-child, footer ul li:last-child {
 .selected {
     border: 2px solid #006ce4;
     border-radius: 0.5em;
+    transition: none;
 }
 
 .card-footer {
