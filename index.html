@@ -53,31 +53,36 @@
             <div class="row">
                 <div class="col-12 secondary-bg-color text-white">
                     <h2 class="fs-1 ms-2 mt-4 mt-lg-5 appear">Find your next stay...</h2>
-                    <p class="fs-5 ms-5 appear">...Is only a click away!</p>
+                    <p class="fs-5 ms-5 appear">...It's only a click away!</p>
                 </div>
             </div>
             <!-- BOOKING FORM -->
             <div class="row pb-4 p-4 secondary-bg-color justify-content-center">
-                <div class="col-10 col-sm-4 col-lg-3">
-                    <div class="form-group">
-                        <label class="form-label text-white appear" for="property">Select Property</label>
-                        <select class="form-select appear" id="property">
-                            <!-- Properties will be rendered here from JavaScript-->
-                        </select>
+                <form class="row g-3 needs-validation" novalidate id="booking-form">
+                    <div class="col-10 col-sm-4">
+                        <div class="form-group">
+                            <label class="form-label text-white" for="property">Select Property</label>
+                            <select class="form-select" id="property" required>
+                                <!-- Properties will be rendered here from JavaScript -->
+                            </select>
+                            <div class="invalid-feedback">Please select a property.</div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-10 col-sm-4 col-lg-3">
-                    <div class="form-group">
-                        <label class="form-label text-white appear" for="arrival">Arrival Date</label>
-                        <input class="form-control appear" type="date" id="arrival">
+                    <div class="col-10 col-sm-4">
+                        <div class="form-group">
+                            <label class="form-label text-white" for="arrival">Arrival Date</label>
+                            <input class="form-control" type="date" id="arrival" required>
+                            <div class="invalid-feedback">Please select an arrival date.</div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-10 col-sm-4 col-lg-3">
-                    <div class="form-group">
-                        <label class="form-label text-white appear" for="nights">Number of Nights</label>
-                        <input class="form-control appear" type="number" id="nights" min="1">
+                    <div class="col-10 col-sm-4">
+                        <div class="form-group">
+                            <label class="form-label text-white" for="nights">Number of Nights</label>
+                            <input class="form-control" type="number" id="nights" min="1" required>
+                            <div class="invalid-feedback">Please enter a valid number of nights.</div>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
 
             <!-- BOOKING DETAILS -->
@@ -124,14 +129,15 @@
         <div class="container-fluid">
             <ul class="text-center">
                 <li>
-                    <a href="#" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
+                    <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
                 </li>
                 <li>
-                    <a href="#" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank"><i
+                            class="fa-brands fa-square-instagram"></i></a>
 
                 </li>
                 <li>
-                    <a href="#" target="_blank"><i class="fa-brands fa-square-twitter"></i></a>
+                    <a href="https://x.com/" target="_blank"><i class="fa-brands fa-square-twitter"></i></a>
                 </li>
             </ul>
         </div>
