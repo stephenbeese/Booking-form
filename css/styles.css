@@ -127,15 +127,13 @@ header ul li:last-child, footer ul li:last-child {
 
 /* ANIMATIONS */
 .appear {
-    transition: all 0.8s;
+    transition: all 0.5s;
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(20px);
 }
 
 .appear.inview {
     opacity: 1;
     transform: none;
-    transition-delay: 0.3s;
+    transition-delay: 0.1s;
 }
-
-
