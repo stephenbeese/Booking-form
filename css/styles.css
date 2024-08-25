@@ -5,6 +5,11 @@ html, body {
     flex-direction: column;
 }
 
+body {
+    /* font-family: "Poppins", sans-serif !important; */
+    font-family: "Open Sans", sans-serif !important;
+}
+
 .main-container {
     flex: 1;
 }

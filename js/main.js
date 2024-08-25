@@ -241,4 +241,3 @@ document.addEventListener('DOMContentLoaded', () => {
     populatePropertySelect(); 
     renderProperties(currentPage); 
   });
-  
